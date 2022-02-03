@@ -7,7 +7,6 @@ coffee_maker = CoffeeMaker()
 menu = Menu()
 coffee = menu.get_items()
 is_on = True
-
 while is_on:
     user_choice = input(f"What would you like ({coffee}): ")
     if user_choice == "report":
@@ -17,8 +16,8 @@ while is_on:
         is_on = False
     else:
         drink = menu.find_drink(user_choice)
-        if coffee_maker.is_resource_sufficient(drink):
-            if(money_machine.make_payment(drink.cost)):
-                coffee_maker.make_coffee(drink)
+        cost = drink.cost
+        if coffee_maker.is_resource_sufficient(drink) and money_machine.make_payment(cost):
+            coffee_maker.make_coffee(drink)
 
 
