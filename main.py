@@ -1,9 +1,4 @@
-from turtle import Screen
-from classes.hirts_painter import hirts_painter
+from classes.sketcher import sketcher
 
-screen = Screen()
-screen.colormode(255)
-
-hirts = hirts_painter("image.png")
-hirts.paint()
-screen.exitonclick()
+tim_sketch = sketcher()
+tim_sketch.sketch()
