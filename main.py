@@ -1,12 +1,14 @@
 import turtle
-
+from classes.state_checker import StateChecker
 screen = turtle.Screen()
 screen.title("US States Game")
 image = "blank_states_img.gif"
+
 screen.addshape(image)
 
 turtle.shape(image)
 
-answer_state = screen.textinput(title="Guess the State", prompt="What's another state?")
+stateChecker = StateChecker(screen)
+stateChecker.prompt_user()
 
 screen.exitonclick()
