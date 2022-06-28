@@ -10,7 +10,7 @@ class StateChecker:
         self.answer = ""
         self.screen = screens
         self.totalData = self.data.state.size
-        self.score = 48
+        self.score = 0
         self.prompts = "What's another state name?"
         self.title = "Guess the State"
         self.turtle = Turtle(shape='turtle')
