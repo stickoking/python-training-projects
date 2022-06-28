@@ -12,3 +12,4 @@ stateChecker = StateChecker(screen)
 stateChecker.prompt_user()
 
 screen.exitonclick()
+screen.exit()

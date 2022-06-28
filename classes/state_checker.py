@@ -1,6 +1,6 @@
 import pandas
 from turtle import Turtle
-
+from classes.state_to_learn import StateToLearn
 
 class StateChecker:
 
@@ -18,6 +18,8 @@ class StateChecker:
         self.turtle.hideturtle()
         self.x_axis = 0
         self.y_axis = 0
+        self.guessed_states = []
+        self.state_to_learn = StateToLearn(self.screen, self.data)
 
     def set_state_title(self):
         self.title = f"{self.score}/{self.totalData} States Correct'"
@@ -30,9 +32,14 @@ class StateChecker:
     def verify(self):
         self.answer = self.data[self.data.state.str.lower() == self.prompt.lower()]
         if self.answer.empty:
-            self.set_state_title()
+            if self.prompt == "exit":
+                self.state_to_learn.print_csv(self.guessed_states)
+            else:
+                self.set_state_title()
+
         else:
             self.score += 1
+            self.guessed_states.append(self.prompt.lower())
             self.x_axis = int(self.answer.x)
             self.y_axis = int(self.answer.y)
             self.turtle.goto(self.x_axis, self.y_axis)
