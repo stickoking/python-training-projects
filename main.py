@@ -1,45 +1,16 @@
-import random
 import pandas
 
-name = ['Alex', 'Bet', 'Caroline', 'Dave', 'Eleanor', 'Freddie']
+# TODO 1. Create a dictionary in this format:
+data = pandas.read_csv("nato_phonetic_alphabet.csv")
+nato_dict = {row.letter: row.code for(index, row) in data.iterrows()}
+print(nato_dict)
 
-students_scores = {students: random.randint(1, 100) for students in name}
+# TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 
-print(students_scores)
+word = input("Please enter a word ").upper()
+keyword = [nato_dict[c] for c in word]
 
-passed_students = {passed: score for(passed, score) in students_scores.items() if score >= 60}
 
-print(passed_students)
+print(keyword)
 
-sentence = "What is the Airspeed Velocity of an Unladen Swallow?"
 
-word_char_count = {word: len(word) for word in sentence.split()}
-
-print(word_char_count)
-
-weather_c = {
-    "Monday": 12,
-    "Tuesday": 14,
-    "Wednesday": 15,
-    "Thursday": 14,
-    "Friday": 21,
-    "Saturday": 22,
-    "Sunday": 24,
-}
-
-weather_f = {day: round((temperature_c * (9/5) + 32), 2) for (day, temperature_c) in weather_c.items()}
-
-print(weather_f)
-
-student_dict = {
-    "student": ["Angela", "James", "Lily"],
-    "score": [56, 76, 98]
-}
-
-student_data_frame = pandas.DataFrame(student_dict)
-
-print(student_data_frame)
-
-#Looping through data frame
-for(index, row) in student_data_frame.iterrows():
-    print(row.student)
